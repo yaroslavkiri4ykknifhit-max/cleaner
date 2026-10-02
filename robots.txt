@@ -1,0 +1,6 @@
+# On a project GitHub Pages site, this file is at /cleaner/robots.txt.
+# Crawlers use /robots.txt at the HOST ROOT, not this project directory.
+# Use this configuration at the origin root after a domain is connected.
+User-agent: *
+Allow: /
+Sitemap: https://yaroslavkiri4ykknifhit-max.github.io/cleaner/sitemap.xml

@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yaroslavkiri4ykknifhit-max.github.io/cleaner/sitemap.xml
-Host: yaroslavkiri4ykknifhit-max.github.io
+Sitemap: https://www.vitcleaner.by/sitemap.xml
+Host: www.vitcleaner.by

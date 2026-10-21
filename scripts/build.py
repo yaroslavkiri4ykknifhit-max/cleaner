@@ -24,6 +24,22 @@ PHONE = "+375295973713"
 PHONE_DISPLAY = "+375 (29) 597-37-13"
 VIBER = "https://viber.click/375295973713"
 LASTMOD = "2026-10-21"
+METRIKA_ID = 113723408
+METRIKA_SCRIPT = f'''<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id={METRIKA_ID}', 'ym');
+
+    ym({METRIKA_ID}, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
+</script>
+<!-- /Yandex.Metrika counter -->'''
+METRIKA_NOSCRIPT = f'''<!-- Yandex.Metrika counter -->
+<noscript><div><img src="https://mc.yandex.ru/watch/{METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->'''
 
 ICONS = {
     "spark": '<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/><path d="m20 2 .6 1.4L22 4l-1.4.6L20 6l-.6-1.4L18 4l1.4-.6Z"/>',
@@ -273,7 +289,7 @@ def document(title, description, body, path="", extra=None, noindex=False, home=
     schema = json.dumps(schema_graph(title, description, url, extra), ensure_ascii=False).replace("</", "<\\/")
     preload = '<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">' if home else ""
     robots = "noindex,follow" if noindex else "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
-    return f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(description)}"><meta name="robots" content="{robots}"><meta name="theme-color" content="#123d32"><meta name="color-scheme" content="light"><meta name="geo.region" content="BY-VI"><meta name="geo.placename" content="Витебск"><link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:locale" content="ru_RU"><meta property="og:site_name" content="Витклинер"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}assets/og-cover.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Витклинер — химчистка и клининг в Витебске"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(title)}"><meta name="twitter:description" content="{E(description)}"><meta name="twitter:image" content="{BASE}assets/og-cover.jpg"><link rel="icon" href="{prefix}assets/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">{preload}<link rel="stylesheet" href="{prefix}assets/site.css?v=20261021c"><script src="{prefix}assets/site.js" defer></script><script type="application/ld+json">{schema}</script></head><body>{header(prefix)}<main id="main">{body}</main>{footer(prefix)}</body></html>'''
+    return f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(description)}"><meta name="robots" content="{robots}"><meta name="theme-color" content="#123d32"><meta name="color-scheme" content="light"><meta name="geo.region" content="BY-VI"><meta name="geo.placename" content="Витебск"><link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:locale" content="ru_RU"><meta property="og:site_name" content="Витклинер"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{BASE}assets/og-cover.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Витклинер — химчистка и клининг в Витебске"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(title)}"><meta name="twitter:description" content="{E(description)}"><meta name="twitter:image" content="{BASE}assets/og-cover.jpg"><link rel="icon" href="{prefix}assets/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">{preload}<link rel="stylesheet" href="{prefix}assets/site.css?v=20261021c"><script src="{prefix}assets/site.js" defer></script><script type="application/ld+json">{schema}</script>{METRIKA_SCRIPT}</head><body>{METRIKA_NOSCRIPT}{header(prefix)}<main id="main">{body}</main>{footer(prefix)}</body></html>'''
 
 
 def write(path, content):
